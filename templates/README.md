@@ -26,8 +26,8 @@ To send make your first API call you will need to [register for an Amadeus Devel
 require 'amadeus'
 
 amadeus = Amadeus::Client.new({
-  api_key: '[YOUR_API_KEY]',
-  api_secret: '[YOUR_API_SECRET]'
+  client_id: '[YOUR_CLIENT_ID]',
+  client_secret: '[YOUR_CLIENT_SECRET]'
 })
 
 amadeus.reference_data.locations.get({ keyword: 'Lon' })
@@ -46,12 +46,12 @@ The client can be initialized directly or via environment variables.
 amadeus = Amadeus::Client.new(client_id: '...', client_secret: '...')
 
 # Alternative: Initialize using environment variables
-# * AMADEUS_API_KEY
-# * AMADEUS_API_SECRET
+# * AMADEUS_CLIENT_ID
+# * AMADEUS_CLIENT_SECRET
 amadeus = Amadeus::Client.new
 ```
 
-Your credentials can be found on the [Amadeus dashboard](https://dashboard.developer.amadeus.com/api_keys). [Sign up](https://developer.amadeus.com/register) for an account today.
+Your credentials can be found on the [Amadeus dashboard](https://dashboard.developer.amadeus.com/client_ids). [Sign up](https://developer.amadeus.com/register) for an account today.
 
 __Next__: [Learn more about our initializing the Ruby SDK](https://developer.amadeus.com/docs/ruby/get_started_initialize) in our documentation.
 

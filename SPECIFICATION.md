@@ -200,7 +200,7 @@ practices, and be one of `amadeus`, `Amadeus`, or `amadeus/amadeus`.
 - [ ] __11.3__ The actual client object for the SDK __should__ exist as a subclass within the Amadeus namespace where the language allows. For for example `Amadeus::Client` in Ruby, or `Amadeus\Client` in PHP
 - [ ] __11.4__ The SDK client __must__ allow for the creation of multiple clients per runtime environment, allowing the creation of multiple clients with different credentials
 - [ ] __11.5__ The SDK client __must__ be able to accept SDK credentials as method parameters
-- [ ] __11.6__ The SDK client __should__ accept the SDK credentials implicitly as environment variables `AMADEUS_API_KEY` and `AMADEUS_API_SECRET`
+- [ ] __11.6__ The SDK client __should__ accept the SDK credentials implicitly as environment variables `AMADEUS_CLIENT_ID` and `AMADEUS_CLIENT_SECRET`
 - [ ] __11.7__ The SDK client __must__ accept a parameter to turn set the logger level (e.g. `0` and any specific verbosity level)
 - [ ] __11.8__ The SDK client __should__ be able to implicitly accept the debug level as environment variable `AMADEUS_LOG_LEVEL`
 - [ ] __11.9__ The SDK client __should__ be able to accept an alternative logger object
