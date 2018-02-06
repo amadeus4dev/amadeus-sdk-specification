@@ -6,6 +6,6 @@
 [spec]: SPECIFICATION.md
 [readme]: templates/README.md
 [license]: templates/LICENSE
-[contribution]: templates/CONTRIBUTION.md
+[contribution]: templates/.github/CONTRIBUTING.md
 [travis]: templates/.travis.yml
 [templates]: templates
