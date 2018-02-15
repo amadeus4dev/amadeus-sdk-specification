@@ -333,12 +333,12 @@ rescue Amadeus::ResponseError => error
   puts error
 end
 ```
-</details>
 
 ```js
 {"error"=>"invalid_client", "error_description"=>"Client credentials are invalid", "code"=>38187,
 "title"=>"Invalid parameters"}
 ```
+</details>
 
 <details>
 <summary>Node example:</summary>
@@ -379,12 +379,118 @@ amadeus.client.get('/foo/bar').catch(console.log);
 ```
 </details>
 
+- [ ] __20.2__ When an unknown path is provided, the error returned __should__ be clear even when debug mode is off
 
+<details>
+<summary>Ruby example:</summary>
+```ruby
+begin
+  amadeus.get('/foo/bar')
+rescue Amadeus::ResponseError => error
+  puts error
+end
+```
 
-Errors: missing parameter error
-Errors: server error
-Errors: network error
-Errors: rate limit
+```js
+[{"code"=>38196, "title"=>"Resource not found", "detail"=>"The targeted resource doesn't exist", "
+status"=>404}]
+```
+</details>
+
+<details>
+<summary>Node example:</summary>
+```js
+amadeus.client.get('/foo/bar').catch(console.log);
+```
+
+```js
+{ Error
+    at new NotFoundError ...
+  response: 
+   Response {
+     contentType: 'application/vnd.amadeus+json',
+     statusCode: 404,
+     request: 
+      Request {
+        host: 'test.api.amadeus.com',
+        port: 443,
+        verb: 'GET',
+        path: '/foo/bar',
+        params: {},
+        queryPath: '/foo/bar?',
+        bearerToken: '...',
+        clientVersion: '0.2.0',
+        languageVersion: 'v8.9.4',
+        appId: null,
+        appVersion: null,
+        headers: [Object] },
+     body: '\n                {\n                    "errors": [\n                        {\n                            "code": 38196,\n                            "title": "Resource not found",\n                            "detail": "The targeted resource doesn\'t exist",\n                            "status": 404\n                        }\n                    ]\n                }\n            ',
+     result: { errors: [Array] },
+     data: undefined,
+     parsed: true },
+  code: 'NotFoundError' }
+```
+</details>
+
+- [ ] __20.3__ When incorrect params are provided, the error returned __should__ be clear even when debug mode is off
+
+<details>
+<summary>Ruby example:</summary>
+```ruby
+begin
+  amadeus.reference_data.locations.get(
+    subType: Amadeus::Location::ANY
+  )
+rescue Amadeus::ResponseError => error
+  puts error
+end
+```
+
+```js
+{"error"=>"invalid_client", "error_description"=>"Client credentials are invalid", "code"=>38187, "title"=>"Invalid parameters"}
+```
+</details>
+
+<details>
+<summary>Node example:</summary>
+```js
+amadeus.referenceData.locations.get({
+  keyword: 'lon'
+}).catch(console.log);
+```
+
+```js
+{ Error
+    at new ClientError ...
+  response: 
+   Response {
+     contentType: 'application/vnd.amadeus+json',
+     statusCode: 400,
+     request: 
+      Request {
+        host: 'test.api.amadeus.com',
+        port: 443,
+        verb: 'GET',
+        path: '/v1/reference-data/locations',
+        params: [Object],
+        queryPath: '/v1/reference-data/locations?keyword=lon',
+        bearerToken: '...',
+        clientVersion: '0.2.0',
+        languageVersion: 'v8.9.4',
+        appId: null,
+        appVersion: null,
+        headers: [Object] },
+     body: '{\n    "errors": [\n        {\n            "status": 400,\n            "code": 32171,\n            "title": "MANDATORY DATA MISSING",\n            "detail": "Missing mandatory query parameter",\n            "source": {\n                "parameter": "subType"\n            }\n        }\n    ]\n}',
+     result: { errors: [Array] },
+     data: undefined,
+     parsed: true },
+  code: 'ClientError' }
+```
+</details>
+
+- [ ] __20.4__ When a server error occurs, the error returned __should__ be clear even when debug mode is off
+- [ ] __20.5__ When a network error occurs, the error returned __should__ be clear even when debug mode is off
+- [ ] __20.6__ When a rate limit occurs, the error returned __should__ be clear even when debug mode is off
 
 ## Specific Language Requirements
 
