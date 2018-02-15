@@ -309,25 +309,92 @@ practices, and be one of `amadeus`, `Amadeus`, or `amadeus/amadeus`.
   - Example given a previous response: `let next_response = amadeus.next(response);`
 - [ ] __18.3__ The SDK __should__ not expose any pagination function on the response objects, as this would require the response objects to keep a reference to the API client, limiting the ability to easily debug a response object
 
+## Key Developer Experience Interactions
+
+### 19. Successful Path Interactions
+
+- [ ] __19.1__ Finding a location by type __should__ allow for using a built in type
+   - Ruby example: `locations = amadeus.reference_data.locations.get(keyword: 'lon', subType: Amadeus::Location::Airport)`
+   - Node example: `let locations = amadeus.referenceData.locations.get({ keyword: 'lon', subType: Amadeus.location.airport });`
+- [ ] __19.2__ Making a query using a location code __should__ be able to use the response from a location query
+   - Ruby example: `amadeus.foo.bar(origin: locations.data.first.iataCode)`
+   - Node example: `amadeus.foo.bar({ origin: locations.data.first.iataCode });`
+
+### 20. Unsuccessful Path Interactions
+
+- [ ] __20.1__ When incorrect credentials are provided, the error returned __should__ be clear even when debug mode is off
+
+Ruby example: 
+
+```ruby
+
+```
+
+Node example: 
+
+```js
+amadeus.foo.bar.get().catch(console.log);
+```
+
+```json
+{ Error
+    at new AuthenticationError ...
+  response: 
+   Response {
+     contentType: 'application/json',
+     statusCode: 401,
+     request: 
+      Request {
+        host: 'test.api.amadeus.com',
+        port: 443,
+        verb: 'POST',
+        path: '/v1/security/oauth2/token',
+        params: [Object],
+        queryPath: '/v1/security/oauth2/token',
+        bearerToken: null,
+        clientVersion: '0.2.0',
+        languageVersion: 'v8.9.4',
+        appId: null,
+        appVersion: null,
+        headers: [Object] },
+     body: ...,
+     result: 
+      { error: 'invalid_client',
+        error_description: 'Client credentials are invalid',
+        code: 38187,
+        title: 'Invalid parameters' },
+     data: undefined,
+     parsed: true },
+  code: 'AuthenticationError' }
+```
+
+
+
+Errors: authentication error
+Errors: missing parameter error
+Errors: server error
+Errors: network error
+Errors: rate limit
+
 ## Specific Language Requirements
 
-### 19. Ruby
+### 21. Ruby
 
-- [ ] __19.1__ The SDK __must__ support Ruby 2.2+
-- [ ] __19.2__ The SDK __should__ support JRuby
+- [ ] __21.1__ The SDK __must__ support Ruby 2.2+
+- [ ] __21.2__ The SDK __should__ support JRuby
 
-### 20. Node / Javascript
+### 22. Node / Javascript
 
-- [ ] __20.1__ The SDK __should__ promises
-- [ ] __20.2__ The SDK __could__ support ES7's `async/await`
-- [ ] __20.3__ The SDK __should__ be written in ES6+
-- [ ] __20.4__ The SDK __should__ work in an ES5 environment
-- [ ] __20.5__ The SDK __should__ support ES6 modules
+- [ ] __22.1__ The SDK __should__ promises
+- [ ] __22.2__ The SDK __could__ support ES7's `async/await`
+- [ ] __22.3__ The SDK __should__ be written in ES6+
+- [ ] __22.4__ The SDK __should__ work in an ES5 environment
+- [ ] __22.5__ The SDK __should__ support ES6 modules
 
-### 21. Python
+### 23. Python
 
-- [ ] __21.1__ The SDK __should__ support Python 2 and 3
+- [ ] __23.1__ The SDK __should__ support Python 2 and 3
 
-### 22. Java
+### 24. Java
 
-- [ ] __22.1__ The SDK __should__ support both the regular JRE, and the Android runtime
+- [ ] __24.1__ The SDK __should__ support both the regular JRE, and the Android runtime
