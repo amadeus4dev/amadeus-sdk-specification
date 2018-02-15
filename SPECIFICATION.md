@@ -228,8 +228,9 @@ practices, and be one of `amadeus`, `Amadeus`, or `amadeus/amadeus`.
     - Example: `amadeus.flights(123).get()` : `GET /v1/flights/123`
 - [ ] __13.3__ When making a POST or PUT request, the SDK API calls __should__ accept a key/value data structure for the data to be submitted
     - Example: `amadeus.flights().post({ from: "LHR", to: "LAX" })`
-- [ ] __13.4__ In asynchronous programming languages, the SDK API calls __should__ allow for a callback method as a final parameter
-    - Example `amadeus.flights().get(params, callback_function)`
+- [ ] __13.4__ In asynchronous programming languages, the SDK API calls __should__ allow for a callback method to be provided, or a promise to be returned
+    - Example with callback `amadeus.flights().get(params, callback_function)`
+    - Example with promise `amadeus.flights().get(params).then(...).catch(...)`
 - [ ] __13.5__ The SDK API calls __should__ return objects or other structured data
     - [ ] __13.5.1__ The SDK __must__ parse the JSON returned from the API
     - [ ] __13.5.2__ The SDK __should__ raise an exception if the JSON could not be parsed
