@@ -301,7 +301,7 @@ practices, and be one of `amadeus`, `Amadeus`, or `amadeus/amadeus`.
 
 ### 18. Node / Javascript
 
-- [ ] __18.1__ The SDK __should__ support both callbacks and promises
+- [ ] __18.1__ The SDK __should__ promises
 - [ ] __18.2__ The SDK __could__ support ES7's `async/await`
 - [ ] __18.3__ The SDK __should__ be written in ES6+
 - [ ] __18.4__ The SDK __should__ work in an ES5 environment
