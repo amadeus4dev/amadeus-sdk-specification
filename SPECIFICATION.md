@@ -54,10 +54,10 @@ Currently this specification is limited due to various reasons. This means that 
     * [17. Requests](#17-requests)
     * [18. Pagination](#18-pagination)
 * Specific Language Requirements
-    * [19. Ruby](#19-ruby)
-    * [20. Node / Javascript](#20-node--javascript)
-    * [21. Python](#21-python)
-    * [22. Java](#22-java)
+    * [21. Ruby](#21-ruby)
+    * [22. Node / Javascript](#22-node--javascript)
+    * [23. Python](#23-python)
+    * [24. Java](#24-java)
 
 ## Maintenance Requirements
 
@@ -325,6 +325,7 @@ practices, and be one of `amadeus`, `Amadeus`, or `amadeus/amadeus`.
 - [ ] __20.1__ When incorrect credentials are provided, the error returned __should__ be clear even when debug mode is off
 <details>
 <summary>Ruby example:</summary>
+   
 ```ruby
 begin
   amadeus.get('/foo/bar')
@@ -341,6 +342,7 @@ end
 
 <details>
 <summary>Node example:</summary>
+   
 ```js
 amadeus.client.get('/foo/bar').catch(console.log);
 ```
@@ -381,6 +383,7 @@ amadeus.client.get('/foo/bar').catch(console.log);
 - [ ] __20.2__ When an unknown path is provided, the error returned __should__ be clear even when debug mode is off
 <details>
 <summary>Ruby example:</summary>
+   
 ```ruby
 begin
   amadeus.get('/foo/bar')
@@ -397,6 +400,7 @@ status"=>404}]
 
 <details>
 <summary>Node example:</summary>
+   
 ```js
 amadeus.client.get('/foo/bar').catch(console.log);
 ```
