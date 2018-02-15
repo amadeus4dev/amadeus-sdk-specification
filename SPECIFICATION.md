@@ -181,7 +181,6 @@ practices, and be one of `amadeus`, `Amadeus`, or `amadeus/amadeus`.
 - [ ] __10.4__ The HTTP client __should__ use the following format user agent to identify the library:
     - Specification: `library_name/library_version language_name/language_version`
     - Example with known language version: `amadeus-ruby/1.0.0 ruby/2.4.2`
-    - Example with unknwon language version: `amadeus-ruby/1.0.0 -`
 - [ ] __10.5__ The SDK __should__ allow a developer to provide an additional __custom app id__ and __custom app version__ to be passed along in the user agent.
     - Specification: `library_name/library_version language_name/language_version app_name/app_version`
     - Example: `amadeus-ruby/1.0.0 ruby/2.4.2 test_ios_app/1.0.0`
