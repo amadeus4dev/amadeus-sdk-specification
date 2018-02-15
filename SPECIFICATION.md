@@ -52,11 +52,12 @@ Currently this specification is limited due to various reasons. This means that 
     * [15. API Calls](#15-api-calls)
     * [16. Responses](#16-responses)
     * [17. Requests](#17-requests)
+    * [18. Pagination](#18-pagination)
 * Specific Language Requirements
-    * [18. Ruby](#18-ruby)
-    * [19. Node / Javascript](#19-node--javascript)
-    * [20. Python](#20-python)
-    * [21. Java](#21-java)
+    * [19. Ruby](#19-ruby)
+    * [20. Node / Javascript](#20-node--javascript)
+    * [21. Python](#21-python)
+    * [22. Java](#22-java)
 
 ## Maintenance Requirements
 
@@ -301,25 +302,32 @@ practices, and be one of `amadeus`, `Amadeus`, or `amadeus/amadeus`.
 - [ ] __17.2__ The request object __must__ track the host, port, verb, path, params, bearerToken, headers (including User Agent) used for the call
 - [ ] __17.3__ The request object __should__ remain lightweight and not contain any instance variables besides those needed to track what API call was made, keeping the logged output of the instance to the important details of the API call.
 
+### 18. Pagination
+
+- [ ] __18.1__ The SDK __must__ allow for easy pagination of responses
+- [ ] __18.2__ The SDK __must__ expose `.next`, `.first`, `.last`, `.previous` methods on the API client to find the relevant page for a response
+  - Example given a previous response: `let next_response = amadeus.next(response);`
+- [ ] __18.3__ The SDK __should__ not expose any pagination function on the response objects, as this would require the response objects to keep a reference to the API client, limiting the ability to easily debug a response object
+
 ## Specific Language Requirements
 
-### 18. Ruby
+### 19. Ruby
 
-- [ ] __18.1__ The SDK __must__ support Ruby 2.2+
-- [ ] __18.2__ The SDK __should__ support JRuby
+- [ ] __19.1__ The SDK __must__ support Ruby 2.2+
+- [ ] __19.2__ The SDK __should__ support JRuby
 
-### 19. Node / Javascript
+### 20. Node / Javascript
 
-- [ ] __19.1__ The SDK __should__ promises
-- [ ] __19.2__ The SDK __could__ support ES7's `async/await`
-- [ ] __19.3__ The SDK __should__ be written in ES6+
-- [ ] __19.4__ The SDK __should__ work in an ES5 environment
-- [ ] __19.5__ The SDK __should__ support ES6 modules
+- [ ] __20.1__ The SDK __should__ promises
+- [ ] __20.2__ The SDK __could__ support ES7's `async/await`
+- [ ] __20.3__ The SDK __should__ be written in ES6+
+- [ ] __20.4__ The SDK __should__ work in an ES5 environment
+- [ ] __20.5__ The SDK __should__ support ES6 modules
 
-### 20. Python
+### 21. Python
 
-- [ ] __20.1__ The SDK __should__ support Python 2 and 3
+- [ ] __21.1__ The SDK __should__ support Python 2 and 3
 
-### 21. Java
+### 22. Java
 
-- [ ] __21.1__ The SDK __should__ support both the regular JRE, and the Android runtime
+- [ ] __22.1__ The SDK __should__ support both the regular JRE, and the Android runtime
