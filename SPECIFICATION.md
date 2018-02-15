@@ -169,9 +169,8 @@ practices, and be one of `amadeus`, `Amadeus`, or `amadeus/amadeus`.
 
 - [ ] __9.1__ The SDK __must__ be able to log activities to a logger
 - [ ] __9.2__ The logger __should__ use the default runtime log
-- [ ] __9.3__ The logger __must__ allow being turned on/off per SDK client
-- [ ] __9.4__ The logger __could__ allow for different verbosity levels per SDK client
-- [ ] __9.5__ The logger __should__ allow a developer to provide an alternative logger
+- [ ] __9.3__ The logger __must__ allow enabling/disabling of debug mode per instance
+- [ ] __9.4__ The logger __should__ allow a developer to provide an alternative logger
 
 ### 10. Reporting
 
@@ -196,7 +195,7 @@ practices, and be one of `amadeus`, `Amadeus`, or `amadeus/amadeus`.
 - [ ] __11.5__ The SDK client __must__ be able to accept SDK credentials as method parameters
 - [ ] __11.6__ The SDK client __should__ accept the SDK credentials implicitly as environment variables `AMADEUS_CLIENT_ID` and `AMADEUS_CLIENT_SECRET`
 - [ ] __11.7__ The SDK client __must__ accept a parameter to turn set the logger level
-- [ ] __11.8__ The SDK client __should__ be able to implicitly accept the debug level as environment variable `AMADEUS_LOG_LEVEL`
+- [ ] __11.8__ The SDK client __should__ be able to implicitly accept the debug level as environment variable `AMADEUS_DEBUG`
 - [ ] __11.9__ The SDK client __should__ be able to accept an alternative logger object
 - [ ] __11.10__ The SDK client __could__ accept an alternative HTTP client
 - [ ] __11.11__ The SDK client __must__ allow selection of the base URL by name (`test` and `production`)
