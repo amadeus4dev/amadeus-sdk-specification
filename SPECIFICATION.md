@@ -320,7 +320,7 @@ practices, and be one of `amadeus`, `Amadeus`, or `amadeus/amadeus`.
    - Ruby example: `locations = amadeus.reference_data.locations.get(keyword: 'lon', subType: Amadeus::Location::Airport)`
    - Node example: `let locations = amadeus.referenceData.locations.get({ keyword: 'lon', subType: Amadeus.location.airport });`
 - [ ] __19.2__ Making a query using a location code __should__ be able to use the response from a location query
-   - Ruby example: `amadeus.foo.bar(origin: locations.data.first.iataCode)`
+   - Ruby example: `amadeus.foo.bar(origin: locations.data.first['iataCode'])`
    - Node example: `amadeus.foo.bar({ origin: locations.data.first.iataCode });`
 
 ### 20. Unsuccessful Path Interactions
