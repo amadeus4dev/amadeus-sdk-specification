@@ -323,7 +323,6 @@ practices, and be one of `amadeus`, `Amadeus`, or `amadeus/amadeus`.
 ### 20. Unsuccessful Path Interactions
 
 - [ ] __20.1__ When incorrect credentials are provided, the error returned __should__ be clear even when debug mode is off
-
 <details>
 <summary>Ruby example:</summary>
 ```ruby
@@ -377,10 +376,9 @@ amadeus.client.get('/foo/bar').catch(console.log);
      parsed: true },
   code: 'AuthenticationError' }
 ```
-</details>
+</details><br/>
 
 - [ ] __20.2__ When an unknown path is provided, the error returned __should__ be clear even when debug mode is off
-
 <details>
 <summary>Ruby example:</summary>
 ```ruby
@@ -430,10 +428,9 @@ amadeus.client.get('/foo/bar').catch(console.log);
      parsed: true },
   code: 'NotFoundError' }
 ```
-</details>
+</details><br/>
 
 - [ ] __20.3__ When incorrect params are provided, the error returned __should__ be clear even when debug mode is off
-
 <details>
 <summary>Ruby example:</summary>
 ```ruby
@@ -486,7 +483,7 @@ amadeus.referenceData.locations.get({
      parsed: true },
   code: 'ClientError' }
 ```
-</details>
+</details><br/>
 
 - [ ] __20.4__ When a server error occurs, the error returned __should__ be clear even when debug mode is off
 - [ ] __20.5__ When a network error occurs, the error returned __should__ be clear even when debug mode is off
