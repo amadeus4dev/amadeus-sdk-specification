@@ -327,16 +327,25 @@ practices, and be one of `amadeus`, `Amadeus`, or `amadeus/amadeus`.
 Ruby example: 
 
 ```ruby
+begin
+  amadeus.get('/foo/bar')
+rescue Amadeus::ResponseError => error
+  puts error
+end
+```
 
+```js
+{"error"=>"invalid_client", "error_description"=>"Client credentials are invalid", "code"=>38187,
+"title"=>"Invalid parameters"}
 ```
 
 Node example: 
 
 ```js
-amadeus.foo.bar.get().catch(console.log);
+amadeus.client.get('/foo/bar').catch(console.log);
 ```
 
-```json
+```js
 { Error
     at new AuthenticationError ...
   response: 
@@ -370,7 +379,6 @@ amadeus.foo.bar.get().catch(console.log);
 
 
 
-Errors: authentication error
 Errors: missing parameter error
 Errors: server error
 Errors: network error
