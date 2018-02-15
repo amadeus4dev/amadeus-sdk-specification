@@ -50,12 +50,13 @@ Currently this specification is limited due to various reasons. This means that 
     * [14. Error Handling](#14-error-handling)
 * API Mapping Requirements
     * [15. API Calls](#15-api-calls)
-    * [16. Entities](#16-entities)
+    * [16. Responses](#16-responses)
+    * [17. Requests](#17-requests)
 * Specific Language Requirements
-    * [17. Ruby](#17-ruby)
-    * [18. Node / Javascript](#18-node--javascript)
-    * [19. Python](#19-python)
-    * [20. Java](#20-java)
+    * [18. Ruby](#18-ruby)
+    * [19. Node / Javascript](#19-node--javascript)
+    * [20. Python](#20-python)
+    * [21. Java](#21-java)
 
 ## Maintenance Requirements
 
