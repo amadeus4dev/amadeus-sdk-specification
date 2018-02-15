@@ -53,6 +53,9 @@ Currently this specification is limited due to various reasons. This means that 
     * [16. Responses](#16-responses)
     * [17. Requests](#17-requests)
     * [18. Pagination](#18-pagination)
+* Key Developer Experience Interactions
+    * [19. Successful Path Interactions](#19-successful-path-interactions)
+    * [20. Unsuccessful Path Interactions](#20-unsuccessful-path-interactions)
 * Specific Language Requirements
     * [21. Ruby](#21-ruby)
     * [22. Node / Javascript](#22-node--javascript)
@@ -437,6 +440,7 @@ amadeus.client.get('/foo/bar').catch(console.log);
 - [ ] __20.3__ When incorrect params are provided, the error returned __should__ be clear even when debug mode is off
 <details>
 <summary>Ruby example:</summary>
+   
 ```ruby
 begin
   amadeus.reference_data.locations.get(
@@ -454,6 +458,7 @@ end
 
 <details>
 <summary>Node example:</summary>
+   
 ```js
 amadeus.referenceData.locations.get({
   keyword: 'lon'
