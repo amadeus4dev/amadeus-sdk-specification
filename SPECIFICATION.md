@@ -351,8 +351,7 @@ amadeus.client.get('/foo/bar').catch(console.log);
 ```
 
 ```js
-{ Error
-    at new AuthenticationError ...
+AuthenticationError {
   response: 
    Response {
      contentType: 'application/json',
@@ -371,7 +370,7 @@ amadeus.client.get('/foo/bar').catch(console.log);
         appId: null,
         appVersion: null,
         headers: [Object] },
-     body: ...,
+     body: '\n                {\n                    "error":"invalid_client",\n                    "error_description": "Client credentials are invalid",\n                    "code": 38187,\n                    "title": "Invalid parameters"\n                }\n            ',
      result: 
       { error: 'invalid_client',
         error_description: 'Client credentials are invalid',
@@ -409,8 +408,7 @@ amadeus.client.get('/foo/bar').catch(console.log);
 ```
 
 ```js
-{ Error
-    at new NotFoundError ...
+NotFoundError {
   response: 
    Response {
      contentType: 'application/vnd.amadeus+json',
@@ -420,9 +418,9 @@ amadeus.client.get('/foo/bar').catch(console.log);
         host: 'test.api.amadeus.com',
         port: 443,
         verb: 'GET',
-        path: '/foo/bar',
+        path: '/foo',
         params: {},
-        queryPath: '/foo/bar?',
+        queryPath: '/foo?',
         bearerToken: '...',
         clientVersion: '0.2.0',
         languageVersion: 'v8.9.4',
@@ -466,8 +464,7 @@ amadeus.referenceData.locations.get({
 ```
 
 ```js
-{ Error
-    at new ClientError ...
+ClientError {
   response: 
    Response {
      contentType: 'application/vnd.amadeus+json',
