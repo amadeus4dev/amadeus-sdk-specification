@@ -324,8 +324,8 @@ practices, and be one of `amadeus`, `Amadeus`, or `amadeus/amadeus`.
 
 - [ ] __20.1__ When incorrect credentials are provided, the error returned __should__ be clear even when debug mode is off
 
-Ruby example: 
-
+<details>
+<summary>Ruby example:</summary>
 ```ruby
 begin
   amadeus.get('/foo/bar')
@@ -333,14 +333,15 @@ rescue Amadeus::ResponseError => error
   puts error
 end
 ```
+</details>
 
 ```js
 {"error"=>"invalid_client", "error_description"=>"Client credentials are invalid", "code"=>38187,
 "title"=>"Invalid parameters"}
 ```
 
-Node example: 
-
+<details>
+<summary>Node example:</summary>
 ```js
 amadeus.client.get('/foo/bar').catch(console.log);
 ```
@@ -376,6 +377,7 @@ amadeus.client.get('/foo/bar').catch(console.log);
      parsed: true },
   code: 'AuthenticationError' }
 ```
+</details>
 
 
 
