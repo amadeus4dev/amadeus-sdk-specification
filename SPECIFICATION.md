@@ -171,6 +171,7 @@ practices, and be one of `amadeus`, `Amadeus`, or `amadeus/amadeus`.
 - [ ] __9.2__ The logger __should__ use the default runtime log
 - [ ] __9.3__ The logger __must__ allow enabling/disabling of debug mode per instance
 - [ ] __9.4__ The logger __should__ allow a developer to provide an alternative logger
+- [ ] __9.5__ When debugging is enabled, the logger __should__ log (and only log) the request object, response object, and optionally any raw HTTP response object of no response object could be formed.
 
 ### 10. Reporting
 
