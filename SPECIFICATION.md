@@ -2,7 +2,7 @@
 
 [Table of Content](#table-of-content) | [Templates](./templates)
 
-![Status](https://img.shields.io/badge/version-1.0-brightgreen.svg)
+![Status](https://img.shields.io/badge/version-2.0-brightgreen.svg)
 
 ## Overview
 
@@ -237,14 +237,18 @@ practices, and be one of `amadeus`, `Amadeus`, or `amadeus/amadeus`.
 
 ### 14. Error Handling
 
-- [ ] __14.1__ The SDK __should__ raise an exception for any request that did not result a HTTP 200 or 201 response code
+- [ ] __14.1__ The SDK __should__ raise a `ResponseError` for any request that did not result a HTTP 200 or 201 response code
 - [ ] __14.2__ The SDK __should__ differentiate between different errors
-    - [ ] __14.2.1__ The SDK __should__ raise a specific exception when a transport error occurs (e.g. if the API could not be reached, or unexpected data was returned from the API)
-    - [ ] __14.2.2__ The SDK __should__ raise a specific exception when a client error occurs (e.g. bad credentials were used, or incorrect data was sent to the API, basically any 400 error)
-    - [ ] __14.2.3__ The SDK __should__ raise a specific exception if a server error occurred
-- [ ] __14.3__ The SDK __should__ prefer using native exceptions and errors over returning error objects
-- [ ] __14.4__ The SDK __should__ not validate submitted data within the SDK, instead leaving this task to the API and raising exceptions on receiving an error response from the API
-- [ ] __14.5__ The SDK __should__ allow the inspection of request and response objects on exception
+    - [ ] __14.2.1__ The SDK __should__ raise a `NetworkError` when a transport error occurs (e.g. if the API could not be reached, or unexpected data was returned from the API)
+    - [ ] __14.2.2__ The SDK __should__ raise a `AuthenticationError` when incorrect credentials were provided
+    - [ ] __14.2.3__ The SDK __should__ raise a `NotFoundError` when the API call returned a 404
+    - [ ] __14.2.4__ The SDK __should__ raise a `ClientError` when a generic client error occurs (e.g. incorrect data was sent to the API, basically any 4XXX error)
+    - [ ] __14.2.5__ The SDK __should__ raise a `ServerError` if the API returned a 5XX error]
+    - [ ] __14.2.6__ The SDK __should__ raise a `ParserError` if the response was JSON but could not be parsed
+- [ ] __14.3__ The response error object __must__ contain a reference to the response object, which itself has a reference to the request object that made the call
+- [ ] __14.4__ The response error object __should__ contain a `code` attribute containing the name of the error, e.g. `NetworkError`.
+- [ ] __14.5__ The response error object __should__ contain a `description` attribute containing the parsed JSON from the API, if the API errored and contained JSON.
+- [ ] __14.6__ The SDK __should__ not validate submitted data within the SDK, instead leaving this task to the API and raising exceptions on receiving an error response from the API
 
 ## API Mapping Requirements
 
