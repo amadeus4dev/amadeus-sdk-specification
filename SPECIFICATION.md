@@ -231,10 +231,7 @@ practices, and be one of `amadeus`, `Amadeus`, or `amadeus/amadeus`.
 - [ ] __13.4__ In asynchronous programming languages, the SDK API calls __should__ allow for a callback method to be provided, or a promise to be returned
     - Example with callback `amadeus.flights().get(params, callback_function)`
     - Example with promise `amadeus.flights().get(params).then(...).catch(...)`
-- [ ] __13.5__ The SDK API calls __should__ return objects or other structured data
-    - [ ] __13.5.1__ The SDK __must__ parse the JSON returned from the API
-    - [ ] __13.5.2__ The SDK __should__ raise an exception if the JSON could not be parsed
-    - [ ] __13.5.3__ The SDK __should__ raise an exception if the parsed object is an error object
+- [ ] __13.5__ The SDK API calls __should__ return a response object
 
 ### 14. Error Handling
 
@@ -280,36 +277,43 @@ practices, and be one of `amadeus`, `Amadeus`, or `amadeus/amadeus`.
 
 ### 16. Responses
 
-- [ ] __16.1__ The SDK __should__ return a response object where possible, instead of the JSON data directly
-- [ ] __16.2__ The SDK __should__ include a method to access the raw JSON data
-    - Example:  `amadeus.reference_data.urls.checkin_links.get({ airline: '1X' }).json` returns `{ meta: ..., data: [...] }`
-- [ ] __16.3__ The SDK __could__ include a method to access the `data` attribute from the returned JSON, if there is any
-  - Example:  `amadeus.reference_data.urls.checkin_links.get({ airline: '1X' }).data` returns `[...]`
-- [ ] __16.3__ The response objects __should__ allow for easy pagination where needed
-    - Example: `response = amadeus.foo.bar(); next_response = result.next();`
-- [ ] __16.4__ The response object __could__ allow for access of the returned data as methods on the object
-    - Example: `flight_offer = amadeus.get_flight_offers(); first_leg = flight_offer.flight.airline.name;`
-- [ ] __16.6__ The response object __should__ be able to deal with any new parameters returned from the API without needing an SDK update. In other words, the class definition of response objects should not define the attributes of the object statically
+- [ ] __16.1__ The SDK __must__ return a response object where possible, instead of the JSON data directly
+- [ ] __16.2__ The response object __must__ contain a `result` attribute with the parsed JSON content if the content could be parsed
+- [ ] __16.4__ The response object __must__ contain a `data` attribute with the content from the data key from the `result` hash, if it is present
+- [ ] __16.5__ The response object __must__ be parsed as well when an error occurred
+- [ ] __16.6__ An error __must__ be thrown if the response was JSON but could not be parsed    
+- [ ] __16.7__ The response object __must__ contain a `statusCode` attribute with HTTP status code of the response
+- [ ] __16.8__ The response object __must__ contain a `request` attribute with the details of the original request made
+- [ ] __16.9__ The response object __should__ contain a `parsed` attribute which should be `true` when the JSON was successfully parsed
+- [ ] __16.10__ The response object __should__ contain a `parsed` attribute which should be `true` when the JSON was successfully parsed
+- [ ] __16.11__ The response object __should__ be able to deal with any new parameters returned from the API without needing an SDK update. In other words, the class definition of response objects should not define the attributes of the object statically
+- [ ] __16.12__ The response object __should__ remain lightweight and not contain any instance variables besides those needed to track what the API returned, keeping the logged output of the instance to the important details of the API call.
+
+### 17. Requests
+
+- [ ] __17.1__ The SDK __must__ keep track of the details of a request in a request object that's accessible through the response object
+- [ ] __17.2__ The request object __must__ track the host, port, verb, path, params, bearerToken, headers (including User Agent) used for the call
+- [ ] __17.3__ The request object __should__ remain lightweight and not contain any instance variables besides those needed to track what API call was made, keeping the logged output of the instance to the important details of the API call.
 
 ## Specific Language Requirements
 
-### 17. Ruby
+### 18. Ruby
 
-- [ ] __17.1__ The SDK __must__ support Ruby 2.2+
-- [ ] __17.2__ The SDK __should__ support JRuby
+- [ ] __18.1__ The SDK __must__ support Ruby 2.2+
+- [ ] __18.2__ The SDK __should__ support JRuby
 
-### 18. Node / Javascript
+### 19. Node / Javascript
 
-- [ ] __18.1__ The SDK __should__ promises
-- [ ] __18.2__ The SDK __could__ support ES7's `async/await`
-- [ ] __18.3__ The SDK __should__ be written in ES6+
-- [ ] __18.4__ The SDK __should__ work in an ES5 environment
-- [ ] __18.5__ The SDK __should__ support ES6 modules
+- [ ] __19.1__ The SDK __should__ promises
+- [ ] __19.2__ The SDK __could__ support ES7's `async/await`
+- [ ] __19.3__ The SDK __should__ be written in ES6+
+- [ ] __19.4__ The SDK __should__ work in an ES5 environment
+- [ ] __19.5__ The SDK __should__ support ES6 modules
 
-### 19. Python
+### 20. Python
 
-- [ ] __19.1__ The SDK __should__ support Python 2 and 3
+- [ ] __20.1__ The SDK __should__ support Python 2 and 3
 
-### 20. Java
+### 21. Java
 
-- [ ] __20.1__ The SDK __should__ support both the regular JRE, and the Android runtime
+- [ ] __21.1__ The SDK __should__ support both the regular JRE, and the Android runtime
