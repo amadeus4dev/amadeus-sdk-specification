@@ -295,9 +295,8 @@ practices, and be one of `amadeus`, `Amadeus`, or `amadeus/amadeus`.
 - [ ] __16.7__ The response object __must__ contain a `statusCode` attribute with HTTP status code of the response
 - [ ] __16.8__ The response object __must__ contain a `request` attribute with the details of the original request made
 - [ ] __16.9__ The response object __should__ contain a `parsed` attribute which should be `true` when the JSON was successfully parsed
-- [ ] __16.10__ The response object __should__ contain a `parsed` attribute which should be `true` when the JSON was successfully parsed
-- [ ] __16.11__ The response object __should__ be able to deal with any new parameters returned from the API without needing an SDK update. In other words, the class definition of response objects should not define the attributes of the object statically
-- [ ] __16.12__ The response object __should__ remain lightweight and not contain any instance variables besides those needed to track what the API returned, keeping the logged output of the instance to the important details of the API call.
+- [ ] __16.10__ The response object __should__ be able to deal with any new parameters returned from the API without needing an SDK update. In other words, the class definition of response objects should not define the attributes of the object statically
+- [ ] __16.11__ The response object __should__ remain lightweight and not contain any instance variables besides those needed to track what the API returned, keeping the logged output of the instance to the important details of the API call.
 
 ### 17. Requests
 
