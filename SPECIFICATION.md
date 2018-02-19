@@ -330,16 +330,16 @@ practices, and be one of `amadeus`, `Amadeus`, or `amadeus/amadeus`.
 <summary>Ruby example:</summary>
    
 ```ruby
-begin
-  amadeus.get('/foo/bar')
-rescue Amadeus::ResponseError => error
-  puts error
-end
+amadeus.get('/foo/bar')
 ```
 
 ```js
-{"error"=>"invalid_client", "error_description"=>"Client credentials are invalid", "code"=>38187,
-"title"=>"Invalid parameters"}
+W, [2018-02-19T16:06:29.881202 #67814]  WARN -- Amadeus AuthenticationError: {
+  "error": "invalid_client",
+  "error_description": "Client credentials are invalid",
+  "code": 38187,
+  "title": "Invalid parameters"
+}
 ```
 </details>
 
@@ -354,7 +354,6 @@ amadeus.client.get('/foo/bar').then(...).catch(...);
 Amadeus AuthenticationError { error: 'invalid_client',
   error_description: 'Client credentials are invalid',
   code: 38187,
-
   title: 'Invalid parameters' }
 ```
 </details><br/>
@@ -364,16 +363,18 @@ Amadeus AuthenticationError { error: 'invalid_client',
 <summary>Ruby example:</summary>
    
 ```ruby
-begin
-  amadeus.get('/foo/bar')
-rescue Amadeus::ResponseError => error
-  puts error
-end
+amadeus.get('/foo/bar')
 ```
 
 ```js
-[{"code"=>38196, "title"=>"Resource not found", "detail"=>"The targeted resource doesn't exist", "
-status"=>404}]
+W, [2018-02-19T16:06:13.523516 #67786]  WARN -- Amadeus NotFoundError: [
+  {
+    "code": 38196,
+    "title": "Resource not found",
+    "detail": "The targeted resource doesn't exist",
+    "status": 404
+  }
+]
 ```
 </details>
 
@@ -388,7 +389,6 @@ amadeus.client.get('/foo/bar').then(...).catch(...);
 Amadeus NotFoundError [ { code: 38196,
     title: 'Resource not found',
     detail: 'The targeted resource doesn\'t exist',
-
     status: 404 } ]
 ```
 </details><br/>
@@ -398,17 +398,24 @@ Amadeus NotFoundError [ { code: 38196,
 <summary>Ruby example:</summary>
    
 ```ruby
-begin
-  amadeus.reference_data.locations.get(
-    subType: Amadeus::Location::ANY
-  )
-rescue Amadeus::ResponseError => error
-  puts error
-end
+amadeus.reference_data.locations.get(
+  subType: Amadeus::Location::ANY
+)
 ```
 
 ```js
-{"error"=>"invalid_client", "error_description"=>"Client credentials are invalid", "code"=>38187, "title"=>"Invalid parameters"}
+W, [2018-02-19T16:05:55.923870 #67772]  WARN -- Amadeus ClientError: [
+  {
+    "status": 400,
+    "code": 32171,
+    "title": "MANDATORY DATA MISSING",
+    "detail": "Missing mandatory query parameter",
+    "source": {
+
+      "parameter": "keyword"
+    }
+  }
+]
 ```
 </details>
 
@@ -426,12 +433,30 @@ Amadeus ClientError [ { status: 400,
     code: 32171,
     title: 'MANDATORY DATA MISSING',
     detail: 'Missing mandatory query parameter',
-
     source: { parameter: 'subType' } } ]
 ```
 </details><br/>
 
 - [ ] __20.4__ When a server error occurs, the error returned __should__ be clear even when debug mode is off
+
+<details>
+<summary>Ruby example:</summary>
+   
+```js
+amadeus.get('/something/that/errors/');
+```
+
+```js
+W, [2018-02-19T16:07:42.651272 #67846]  WARN -- Amadeus ServerError: [
+  {
+    "code": 38189,
+    "title": "Internal error",
+    "detail": "An internal error occured, please contact your administrator",
+    "status": 500
+  }
+]
+```
+</details>
 
 <details>
 <summary>Node example:</summary>
@@ -451,6 +476,18 @@ Amadeus ServerError [ { code: 38189,
 - [ ] __20.5__ When a network error occurs, the error returned __should__ be clear even when debug mode is off
 
 <details>
+<summary>Ruby example:</summary>
+   
+```js
+amadeus.get('/something/that/errors/');
+```
+
+```js
+W, [2018-02-19T16:13:14.374444 #68060]  WARN -- Amadeus NetworkError: nil
+```
+</details>
+
+<details>
 <summary>Node example:</summary>
    
 ```js
@@ -463,6 +500,25 @@ Amadeus NetworkError null
 </details><br/>
 
 - [ ] __20.6__ When a rate limit occurs, the error returned __should__ be clear even when debug mode is off
+
+<details>
+<summary>Ruby example:</summary>
+   
+```js
+amadeus.get('/something/that/rate/limits/');
+```
+
+```js
+W, [2018-02-19T16:07:42.651272 #67846]  WARN -- Amadeus ServerError: [
+  { 
+    code: 38194,
+    title: 'Too many requests',
+    detail: 'The network rate limit is exceeded, please try again later',
+    status: 429 
+  }
+]
+```
+</details>
 
 <details>
 <summary>Node example:</summary>
