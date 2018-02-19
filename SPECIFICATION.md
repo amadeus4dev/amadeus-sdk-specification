@@ -347,38 +347,15 @@ end
 <summary>Node example:</summary>
    
 ```js
-amadeus.client.get('/foo/bar').catch(console.log);
+amadeus.client.get('/foo/bar').then(...).catch(...);
 ```
 
 ```js
-AuthenticationError {
-  response: 
-   Response {
-     contentType: 'application/json',
-     statusCode: 401,
-     request: 
-      Request {
-        host: 'test.api.amadeus.com',
-        port: 443,
-        verb: 'POST',
-        path: '/v1/security/oauth2/token',
-        params: [Object],
-        queryPath: '/v1/security/oauth2/token',
-        bearerToken: null,
-        clientVersion: '0.2.0',
-        languageVersion: 'v8.9.4',
-        appId: null,
-        appVersion: null,
-        headers: [Object] },
-     body: '\n                {\n                    "error":"invalid_client",\n                    "error_description": "Client credentials are invalid",\n                    "code": 38187,\n                    "title": "Invalid parameters"\n                }\n            ',
-     result: 
-      { error: 'invalid_client',
-        error_description: 'Client credentials are invalid',
-        code: 38187,
-        title: 'Invalid parameters' },
-     data: undefined,
-     parsed: true },
-  code: 'AuthenticationError' }
+Amadeus AuthenticationError { error: 'invalid_client',
+  error_description: 'Client credentials are invalid',
+  code: 38187,
+
+  title: 'Invalid parameters' }
 ```
 </details><br/>
 
@@ -404,34 +381,15 @@ status"=>404}]
 <summary>Node example:</summary>
    
 ```js
-amadeus.client.get('/foo/bar').catch(console.log);
+amadeus.client.get('/foo/bar').then(...).catch(...);
 ```
 
 ```js
-NotFoundError {
-  response: 
-   Response {
-     contentType: 'application/vnd.amadeus+json',
-     statusCode: 404,
-     request: 
-      Request {
-        host: 'test.api.amadeus.com',
-        port: 443,
-        verb: 'GET',
-        path: '/foo',
-        params: {},
-        queryPath: '/foo?',
-        bearerToken: '...',
-        clientVersion: '0.2.0',
-        languageVersion: 'v8.9.4',
-        appId: null,
-        appVersion: null,
-        headers: [Object] },
-     body: '\n                {\n                    "errors": [\n                        {\n                            "code": 38196,\n                            "title": "Resource not found",\n                            "detail": "The targeted resource doesn\'t exist",\n                            "status": 404\n                        }\n                    ]\n                }\n            ',
-     result: { errors: [Array] },
-     data: undefined,
-     parsed: true },
-  code: 'NotFoundError' }
+Amadeus NotFoundError [ { code: 38196,
+    title: 'Resource not found',
+    detail: 'The targeted resource doesn\'t exist',
+
+    status: 404 } ]
 ```
 </details><br/>
 
@@ -460,40 +418,66 @@ end
 ```js
 amadeus.referenceData.locations.get({
   keyword: 'lon'
-}).catch(console.log);
+}).then(...).catch(...);
 ```
 
 ```js
-ClientError {
-  response: 
-   Response {
-     contentType: 'application/vnd.amadeus+json',
-     statusCode: 400,
-     request: 
-      Request {
-        host: 'test.api.amadeus.com',
-        port: 443,
-        verb: 'GET',
-        path: '/v1/reference-data/locations',
-        params: [Object],
-        queryPath: '/v1/reference-data/locations?keyword=lon',
-        bearerToken: '...',
-        clientVersion: '0.2.0',
-        languageVersion: 'v8.9.4',
-        appId: null,
-        appVersion: null,
-        headers: [Object] },
-     body: '{\n    "errors": [\n        {\n            "status": 400,\n            "code": 32171,\n            "title": "MANDATORY DATA MISSING",\n            "detail": "Missing mandatory query parameter",\n            "source": {\n                "parameter": "subType"\n            }\n        }\n    ]\n}',
-     result: { errors: [Array] },
-     data: undefined,
-     parsed: true },
-  code: 'ClientError' }
+Amadeus ClientError [ { status: 400,
+    code: 32171,
+    title: 'MANDATORY DATA MISSING',
+    detail: 'Missing mandatory query parameter',
+
+    source: { parameter: 'subType' } } ]
 ```
 </details><br/>
 
 - [ ] __20.4__ When a server error occurs, the error returned __should__ be clear even when debug mode is off
+
+<details>
+<summary>Node example:</summary>
+   
+```js
+amadeus.get('/something/that/errors/').then(...).catch(...);
+```
+
+```js
+Amadeus ServerError [ { code: 38189,
+    title: 'Internal error',
+    detail: 'An internal error occured, please contact your administrator',
+    status: 500 } ]
+```
+</details><br/>
+
 - [ ] __20.5__ When a network error occurs, the error returned __should__ be clear even when debug mode is off
+
+<details>
+<summary>Node example:</summary>
+   
+```js
+amadeus.get('/something/that/errors/').then(...).catch(...);
+```
+
+```js
+Amadeus NetworkError null
+```
+</details><br/>
+
 - [ ] __20.6__ When a rate limit occurs, the error returned __should__ be clear even when debug mode is off
+
+<details>
+<summary>Node example:</summary>
+   
+```js
+amadeus.get('/something/that/errors/').then(...).catch(...);
+```
+
+```js
+Amadeus ClientError [ { code: 38194,
+    title: 'Too many requests',
+    detail: 'The network rate limit is exceeded, please try again later',
+    status: 429 } ]
+```
+</details><br/>
 
 ## Specific Language Requirements
 
