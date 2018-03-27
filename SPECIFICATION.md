@@ -464,6 +464,24 @@ Amadeus ClientError [ { status: 400,
     detail: 'Missing mandatory query parameter',
     source: { parameter: 'subType' } } ]
 ```
+</details>
+
+<details>
+<summary>Ruby example:</summary>
+   
+```python
+amadeus.reference_data.locations.get(
+  subType: Amadeus::Location::ANY
+)
+```
+
+```python
+Amadeus ClientError: [{'code': 32171,
+  'detail': 'Missing mandatory query parameter',
+  'source': {'parameter': 'keyword'},
+  'status': 400,
+  'title': 'MANDATORY DATA MISSING'}]
+```
 </details><br/>
 
 - [ ] __20.4__ When a server error occurs, the error returned __should__ be clear even when debug mode is off
@@ -500,6 +518,22 @@ Amadeus ServerError [ { code: 38189,
     detail: 'An internal error occured, please contact your administrator',
     status: 500 } ]
 ```
+</details>
+
+<details>
+<summary>Python example:</summary>
+   
+```python
+amadeus.get('/something/that/errors/');
+```
+
+```pyton
+Amadeus ClientError: [{'code': 38189,
+    "code": 38189,
+    "title": "Internal error",
+    "detail": "An internal error occured, please contact your administrator",
+    "status": 500 }]
+```
 </details><br/>
 
 - [ ] __20.5__ When a network error occurs, the error returned __should__ be clear even when debug mode is off
@@ -507,11 +541,11 @@ Amadeus ServerError [ { code: 38189,
 <details>
 <summary>Ruby example:</summary>
    
-```js
+```ruby
 amadeus.get('/something/that/errors/');
 ```
 
-```js
+```ruby
 W, [2018-02-19T16:13:14.374444 #68060]  WARN -- Amadeus NetworkError: nil
 ```
 </details>
@@ -533,11 +567,11 @@ Amadeus NetworkError null
 <details>
 <summary>Ruby example:</summary>
    
-```js
+```ruby
 amadeus.get('/something/that/rate/limits/');
 ```
 
-```js
+```ruby
 W, [2018-02-19T16:07:42.651272 #67846]  WARN -- Amadeus ServerError: [
   { 
     code: 38194,
@@ -562,7 +596,23 @@ Amadeus ClientError [ { code: 38194,
     detail: 'The network rate limit is exceeded, please try again later',
     status: 429 } ]
 ```
-</details><br/>
+</details>
+
+<details>
+<summary>Python example:</summary>
+   
+```python
+amadeus.get('/something/that/rate/limits/');
+```
+
+```python
+Amadeus ClientError: [{'code': 38194,
+  'detail': 'The network rate limit is exceeded, please try again later',
+  'status': 429,
+  'title': 'Too many requests'}]
+```
+</details>
+<br/>
 
 ## Specific Language Requirements
 
