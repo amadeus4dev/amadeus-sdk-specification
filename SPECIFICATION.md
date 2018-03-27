@@ -361,7 +361,7 @@ Amadeus AuthenticationError { error: 'invalid_client',
 <summary>Python example:</summary>
    
 ```js
-amadeus.get('/foo/bar');
+amadeus.get('/foo/bar')
 ```
 
 ```js
@@ -380,7 +380,7 @@ Amadeus AuthenticationError: {'code': 38187,
 amadeus.get('/foo/bar')
 ```
 
-```js
+```ruby
 W, [2018-02-19T16:06:13.523516 #67786]  WARN -- Amadeus NotFoundError: [
   {
     "code": 38196,
@@ -404,6 +404,21 @@ Amadeus NotFoundError [ { code: 38196,
     title: 'Resource not found',
     detail: 'The targeted resource doesn\'t exist',
     status: 404 } ]
+```
+</details>
+
+<details>
+<summary>Python example:</summary>
+   
+```python
+amadeus.get('/foo/bar')
+```
+
+```python
+Amadeus NotFoundError: [{'code': 38196,
+  'detail': "The targeted resource doesn't exist",
+  'status': 404,
+  'title': 'Resource not found'}]
 ```
 </details><br/>
 
