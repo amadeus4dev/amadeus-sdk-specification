@@ -332,7 +332,7 @@ practices, and be one of `amadeus`, `Amadeus`, or `amadeus/amadeus`.
 amadeus.get('/foo/bar')
 ```
 
-```js
+```ruby
 W, [2018-02-19T16:06:29.881202 #67814]  WARN -- Amadeus AuthenticationError: {
   "error": "invalid_client",
   "error_description": "Client credentials are invalid",
@@ -355,6 +355,21 @@ Amadeus AuthenticationError { error: 'invalid_client',
   code: 38187,
   title: 'Invalid parameters' }
 ```
+</details>
+
+<details>
+<summary>Python example:</summary>
+   
+```js
+amadeus.get('/foo/bar');
+```
+
+```js
+Amadeus AuthenticationError: {'code': 38187,
+ 'error': 'invalid_client',
+ 'error_description': 'Client credentials are invalid',
+ 'title': 'Invalid parameters'}
+ ```
 </details><br/>
 
 - [ ] __20.2__ When an unknown path is provided, the error returned __should__ be clear even when debug mode is off
