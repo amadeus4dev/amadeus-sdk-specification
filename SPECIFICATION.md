@@ -560,6 +560,18 @@ amadeus.get('/something/that/errors/').then(...).catch(...);
 ```js
 Amadeus NetworkError null
 ```
+</details>
+
+<details>
+<summary>Python example:</summary>
+   
+```python
+amadeus.get('/something/that/errors/');
+```
+
+```python
+Amadeus NetworkError: None
+```
 </details><br/>
 
 - [ ] __20.6__ When a rate limit occurs, the error returned __should__ be clear even when debug mode is off
